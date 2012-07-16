@@ -5,11 +5,15 @@ module SendgridEvents
         Dispatch.registered_handlers
       end
 
+      def self.selected_handlers
+        Dispatch.selected_handlers
+      end
+
       def self.choose_and_handle(event)
-        if registered_handlers.has_key? event[:event]
+        if registered_handlers[event[:event]] and selected_handlers[event[:event]]
           registered_handlers[event[:event]].handle(event)
         else
-          puts "Don't have a handler for #{event[:event]}"
+          puts "Either don't have a handler for #{event[:event]} or have configured to not use it."
         end
       end
 
