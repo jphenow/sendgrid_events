@@ -1,8 +1,10 @@
 module SendgridEvents
   class Receiver
     def self.receive(params)
-      extract_events_and_clean(params).each do |event|
-        Handlers::Base.choose_and_handle event
+      if Configure.receive?
+        extract_events_and_clean(params).each do |event|
+          Handlers::Base.choose_and_handle event
+        end
       end
     end
 
