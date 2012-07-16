@@ -4,6 +4,9 @@
 # loaded once.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+require 'action_mailer'
+require 'rails'
+require 'sendgrid_events'
 RSpec.configure do |config|
   config.treat_symbols_as_metadata_keys_with_true_values = true
   config.run_all_when_everything_filtered = true
@@ -14,4 +17,13 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = 'random'
+  config.after(:all) do # Force a reset of some Classes
+    project_dir = ENV['BUNDLE_GEMFILE'].split('/')
+    project_dir.delete_at(-1)
+    project_dir = project_dir.join('/')
+    singletons.each do |s|
+      Scribbler.send(:remove_const, s)
+      load "#{project_dir}/lib/sendgrid_events/#{s.downcase}.rb"
+    end
+  end
 end
