@@ -2,7 +2,7 @@ require 'rails/generators'
 module SendgridEvents
   module Generators
     class InstallGenerator < Rails::Generators::Base
-      source_root File.expand_path "../templates", __FILE__
+      source_root File.expand_path "../install/templates", __FILE__
       include Rails::Generators::ResourceHelpers
 
       class_option :migrations, :desc => "Generate migrations", :type => :boolean, :default => true
