@@ -1,6 +1,6 @@
 # SendgridEvents
 
-SendgridEvents is a gem designed to give your application [Sendgrid postbacks](http://docs.sendgrid.com/documentation/api/event-api/008c8d3732b6b8b496362fefa86e4deca0af99b9ed0a7f89fa2004a78f00dd2b325f17be5ccb4a19e4f95091b329bb2b78cabea8689a78f111b26c5296a87dd2fb).
+SendgridEvents is a gem designed to give your application [Sendgrid postbacks](http://docs.sendgrid.com/documentation/api/event-api/).
 With these postbacks you are more able to track the status of your emails programatically.
 
 This gem creates a `SendgridEmailRecord` table for this tracking and you can attach handlers to specific
