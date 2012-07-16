@@ -20,7 +20,9 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'capybara'
   gem.add_development_dependency 'rails', '~> 3.0.15'
   gem.add_development_dependency 'factory_girl_rails', '~> 1.7'
+  gem.add_development_dependency 'sqlite3'
 
   gem.add_dependency 'rails', '~> 3.0.15'
   gem.add_dependency 'sendgrid'
+  gem.add_dependency 'enumerated_field'
 end
