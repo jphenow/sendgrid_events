@@ -1,8 +1,7 @@
 require 'rails/generators'
-module SengridEvents
+module SendgridEvents
   module Generators
     class InstallGenerator < Rails::Generators::Base
-      namespace "sendgrid_events"
       source_root File.expand_path "../templates", __FILE__
       include Rails::Generators::ResourceHelpers
 
