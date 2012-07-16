@@ -5,7 +5,7 @@ module SendgridEvents
     end
 
     def self.handle(list)
-      Dispatch.selected_handlers = list
+      Handlers::Dispatch.selected_handlers = list
     end
   end
 end

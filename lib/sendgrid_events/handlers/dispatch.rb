@@ -21,7 +21,7 @@ module SendgridEvents
                                               spamreport
                                               unsubscribe
                                             ]
-                                   Hash[*array.zip([true] * array.size)].symbolize_keys
+                                   Hash[array.zip([true] * array.size)].symbolize_keys
                                  end
       end
 
