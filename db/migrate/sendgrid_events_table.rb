@@ -5,6 +5,8 @@ class CreateSendGridEmailRecordTable < ActiveRecord::Migration
       t.string :to
       t.string :from
       t.string :subject
+
+      t.timestamps
     end
   end
 
