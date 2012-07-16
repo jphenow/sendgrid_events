@@ -12,7 +12,7 @@ module SendgridEvents
       def self.acceptable_handlers
         @acceptable_handlers ||= begin
                                    array = %w[processed
-                                              deffered
+                                              deferred
                                               delivered
                                               open
                                               click
