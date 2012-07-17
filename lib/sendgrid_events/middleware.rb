@@ -1,3 +1,4 @@
+require 'action_dispatch/http/request'
 module SendgridEvents
   class Middleware
     def initialize(app)
@@ -6,16 +7,15 @@ module SendgridEvents
 
     def call(env)
       if env["REQUEST_URI"].include? Configure.mount_at
-        raise env.inspect
-        query = env["QUERY_STRING"]
-        clean_sendgrid_params query
+        clean_sendgrid_params env
       end
       @app.call(env)
     end
 
     private
-    def clean_sendgrid_params(query)
-      raise query
+    def clean_sendgrid_params(env)
+       request = Request.new(env)
+       raise request.body.rewind.read
     end
   end
 end
