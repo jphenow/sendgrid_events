@@ -12,7 +12,7 @@ module SendgridEvents
     private
     def scrub(env)
       rack_input = env["rack.input"].read
-      rack_input.split("\r\n").join(",")
+      rack_input ="[#{rack_input.split("\r\n").join(",")}]"
       env["rack.input"] = StringIO.new(rack_input)
     rescue
     ensure
