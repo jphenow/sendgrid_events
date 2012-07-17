@@ -6,6 +6,7 @@ module SendgridEvents
 
     def call(env)
       if env["REQUEST_URI"].include? Configure.mount_at
+        raise env.inspect
         query = env["QUERY_STRING"]
         clean_sendgrid_params query
       end
