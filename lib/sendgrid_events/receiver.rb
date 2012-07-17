@@ -2,16 +2,9 @@ module SendgridEvents
   class Receiver
     def self.receive(params)
       if Configure.receive?
-        extract_events_and_clean(params).each do |event|
-          Handlers::Base.choose_and_handle event
+        params.each do |event|
+          Handlers::Base.choose_and_handle(event) if event.has_key? :sendgrid_events_id
         end
-      end
-    end
-
-    private
-    def self.extract_events_and_clean(params)
-      params.first.first.split("\n").collect do |json_hash|
-        JSON.parse(json_hash).symbolize_keys
       end
     end
   end
