@@ -6,7 +6,7 @@ module SendgridEvents
       end
 
       def self.registered_handlers
-        @registered_handlers ||= {}
+        @registered_handlers.present? ? @registered_handlers.with_indifferent_access : {}
       end
 
       def self.acceptable_handlers
@@ -21,13 +21,13 @@ module SendgridEvents
                                               spamreport
                                               unsubscribe
                                             ]
-                                   Hash[array.zip([true] * array.size)].symbolize_keys
+                                   Hash[array.zip([true] * array.size)].with_indifferent_access
                                  end
       end
 
       def self.selected_handlers=(handler_list)
         raise ArgumentError, "Found an unaccetable handler" unless handler_list.all? { |x| acceptable_handlers[x.to_sym] }
-        @selected_handlers = Hash[handler_list.zip([true] * handler_list.size)].symbolize_keys
+        @selected_handlers = Hash[handler_list.zip([true] * handler_list.size)].with_indifferent_access
       end
     end
   end
