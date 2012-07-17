@@ -17,7 +17,7 @@ module SendgridEvents
       } }
 
       it "returns the list of handlers" do
-        subject.registered_handlers.symbolize_keys.keys.sort.should == Dispatch.acceptable_handlers.keys.sort
+        subject.registered_handlers.keys.sort.should == Dispatch.acceptable_handlers.keys.sort
       end
 
       it "chose a handler if handler is registered" do

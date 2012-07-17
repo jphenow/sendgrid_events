@@ -6,7 +6,7 @@ module SendgridEvents
       end
 
       def self.registered_handlers
-        (@registered_handlers ||= {}).with_indifferent_access
+        @registered_handlers ||= {}.with_indifferent_access
       end
 
       def self.acceptable_handlers
