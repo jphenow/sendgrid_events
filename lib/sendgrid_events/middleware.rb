@@ -15,7 +15,8 @@ module SendgridEvents
     private
     def clean_sendgrid_params(env)
        request = ActionDispatch::Request.new(env)
-       raise request.body.rewind.read
+       request.body.rewind
+       raise request.body.read.inspect
     end
   end
 end
