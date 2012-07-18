@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    sendgrid_events (0.0.3)
+    sendgrid_events (0.0.4)
       enumerated_field
       rails (~> 3.0.15)
       sendgrid
