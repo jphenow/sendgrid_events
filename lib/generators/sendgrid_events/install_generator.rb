@@ -47,7 +47,7 @@ module SendgridEvents
       def middleware
         puts "Copying config..."
         insert_into_file Rails.root.join('config', 'application.rb'), :after => /class Application.*$/ do
-          "\n\t\tconfig.middleware.insert_after ActiveRecord::ParamsParser, SendgridEvents::Middleware"
+          "\n    config.middleware.insert_after ActiveRecord::ParamsParser, SendgridEvents::Middleware"
         end
       end
     end
