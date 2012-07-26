@@ -5,7 +5,7 @@ module SendgridEvents
     end
 
     def call(env)
-      scrub(env) if env["REQUEST_URI"].include? Configure.mount_at
+      scrub(env) if env and env["REQUEST_URI"] and env["REQUEST_URI"].include? Configure.mount_at
       @app.call(env)
     end
 
