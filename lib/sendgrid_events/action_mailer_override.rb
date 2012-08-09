@@ -2,22 +2,23 @@ module SendgridEvents
   module ActionMailerOverride
     extend ActiveSupport::Concern
     included do
-      alias_method_chain :sendgrid_unique_args, :merge_args
+      alias_method_chain :uniq_args, :merge_args
+      alias_method_chain :mail, :record_email
     end
 
-    def sendgrid_unique_args_with_merge_args(args={})
-      @sg_unique_args ||= {}
-      @sg_unique_args.merge! args
+    def uniq_args_with_merge_args(args)
+      set_args = send_grid_header.data[:unique_args] ||= {}
+      uniq_args_without_merge_args set_args.merge(args)
     end
 
-    def mail(headers={}, &block)
-        id = SendgridEmailRecord.create!(:to => headers[:to],
-                                         :from => headers[:from],
-                                         :subject => headers[:subject],
-                                         :status => 'processing').id
-        sendgrid_unique_args :sendgrid_events_id => id
-      super headers, &block
+    def mail_with_record_email(headers={}, &block)
+      id = SendgridEmailRecord.create!(:to => headers[:to],
+                                       :from => headers[:from],
+                                       :subject => headers[:subject],
+                                       :status => 'processing').id
+      uniq_args :sendgrid_events_id => id
+      mail_without_record_email headers, &block
     end
   end
 end
-SendGrid.send :include, SendgridEvents::ActionMailerOverride
+ActionMailer::Base.send :include, SendgridEvents::ActionMailerOverride
