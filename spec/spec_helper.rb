@@ -25,6 +25,9 @@ end
 Dir.glob(File.expand_path('../../app/models/**/*.rb', __FILE__)).each { |file| require file }
 require 'sendgrid_events'
 
+ActionMailer::Base.delivery_method = :test
+ActionMailer::Base.register_interceptor(SendGrid::MailInterceptor)
+
 RSpec.configure do |config|
 
   config.treat_symbols_as_metadata_keys_with_true_values = true

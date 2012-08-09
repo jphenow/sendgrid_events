@@ -23,6 +23,6 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'sqlite3'
 
   gem.add_dependency 'rails', '~> 3.0.15'
-  gem.add_dependency 'sendgrid'
+  gem.add_dependency 'sendgrid-rails', '~> 2.0'
   gem.add_dependency 'enumerated_field'
 end
