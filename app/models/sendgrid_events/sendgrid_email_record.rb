@@ -10,5 +10,12 @@ module SendgridEvents
       %w[bounced bounced],
       %w[delivered delivered]
     ]
+
+    def self.create_from_headers!(headers, additional_attributes)
+      create!(:to      => headers[:to],
+              :from    => headers[:from],
+              :subject => headers[:subject],
+              :status  => 'processing')
+    end
   end
 end
