@@ -4,7 +4,7 @@ module SendgridEvents
     describe Clicked do
       subject { Clicked }
       it { should respond_to(:handle) }
-      it { should respond_to(:handlee) }
+      its(:handlee) { should == 'clicked' }
       let(:event) { {
         :email => "foo@bar.com",
         :timestamp => 1322000095,

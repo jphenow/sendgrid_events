@@ -4,7 +4,7 @@ module SendgridEvents
     describe SpamReported do
       subject { SpamReported }
       it { should respond_to(:handle) }
-      it { should respond_to(:handlee) }
+      its(:handlee) { should == 'spamreported' }
       let(:event) { {
         :email => "foo@bar.com",
         :timestamp => 1322000095,

@@ -4,7 +4,7 @@ module SendgridEvents
     describe Bounced do
       subject { Bounced }
       it { should respond_to(:handle) }
-      it { should respond_to(:handlee) }
+      its(:handlee) { should == 'bounced' }
       let(:event) { {
         :email => "foo@bar.com",
         :timestamp => 1322000095,
