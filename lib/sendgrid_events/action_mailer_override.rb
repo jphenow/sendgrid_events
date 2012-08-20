@@ -8,6 +8,7 @@ module SendgridEvents
 
     attr_accessor :sendgrid_email_record_attributes
     def sendgrid_email_record_attributes(attrs = nil)
+      @sendgrid_email_record_attributes ||= {}
       return @sendgrid_email_record_attributes if attrs.nil?
       self.sendgrid_email_record_attributes = attrs
     end
