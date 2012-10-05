@@ -4,7 +4,7 @@ module SendgridEvents
     describe Deferred do
       subject { Deferred }
       it { should respond_to(:handle) }
-      it { should respond_to(:handlee) }
+      its(:handlee) { should == 'deferred' }
       let(:event) { {
         :email => "foo@bar.com",
         :timestamp => 1322000095,

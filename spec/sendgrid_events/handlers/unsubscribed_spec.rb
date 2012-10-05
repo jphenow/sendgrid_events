@@ -4,7 +4,7 @@ module SendgridEvents
     describe Unsubscribed do
       subject { Unsubscribed }
       it { should respond_to(:handle) }
-      it { should respond_to(:handlee) }
+      its(:handlee) { should == 'unsubscribed' }
       let(:event) { {
         :email => "foo@bar.com",
         :timestamp => 1322000095,

@@ -24,7 +24,7 @@ module SendgridEvents
           handlee = handlee.to_s
           registered_handlers[handlee] = self.name.constantize
           self.name.constantize.send :define_singleton_method, :handlee do
-            handlee
+            self.name.demodulize.downcase
           end
         else
           raise ArgumentError, "#{handlee.to_s.titleize} is not in the Dispatch's list of acceptable handlers"
