@@ -1,6 +1,7 @@
 # SendgridEvents
 
 [![TravisCI](https://secure.travis-ci.org/jphenow/sendgrid_events.png "TravisCI")](http://travis-ci.org/jphenow/sendgrid_events "Travis-CI SendgridEvents")
+[![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/jphenow/sendgrid_events)
 [Ruby Gems](https://rubygems.org/gems/sendgrid_events)
 
 SendgridEvents is a gem designed to give your application [Sendgrid postbacks](http://docs.sendgrid.com/documentation/api/event-api/).
